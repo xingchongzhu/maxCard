@@ -117,6 +117,7 @@ public class AddContactFragment extends Fragment implements DataWatcher {
 	private boolean selectPhotoFlag = false;
 	private ViewPageAdapter mMyPagerAdapter = null;
 	private MyHintDialog mMyHintDialog = null;
+	private boolean scannerFlag = false;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -161,6 +162,9 @@ public class AddContactFragment extends Fragment implements DataWatcher {
 		if (data != null && data.getBoolean("change", false)) {
 			intentCardModel = db.QueryMaxCardBycontactId(data
 					.getString(StaticSetting.INTENT_CONTACT_ID_FLAG));
+		}else if(data != null && data.getBoolean("scanner", false)){
+			scannerFlag = true;
+			intentCardModel = (CardModel)data.getParcelable("CardModel");
 		}
 	}
 
@@ -315,7 +319,7 @@ public class AddContactFragment extends Fragment implements DataWatcher {
 		tmp.setPersonBitmap(currentlogo);
 		tmp.setBgImage(currentBglogo);
 		Log.d(TAG, "getCurrentCardModel currentBglogo = " + currentBglogo);
-		if (intentCardModel != null) {
+		if (intentCardModel != null && !scannerFlag) {
 			tmp.setContactId(intentCardModel.getContactId());
 		}
 		return tmp;
@@ -406,7 +410,7 @@ public class AddContactFragment extends Fragment implements DataWatcher {
 		CardModel mCardModel = getCurrentCardModel();
 		long id = -1;
 		DatabaseSyncRegister.getInstance().setChangeLock(false);
-		if (intentCardModel != null) {
+		if (intentCardModel != null && !scannerFlag) {
 			id = db.UpdateMaxCardInfo(mCardModel);
 		} else {
 			long contactid = ConstactUtil.insertConstact(getActivity(),
@@ -419,7 +423,7 @@ public class AddContactFragment extends Fragment implements DataWatcher {
 		// "addcontactActivity id = "+contactid+" name = "+mCardModel.getmSortModel().getName());
 		if (id > 0) {
 			mCustomApplication.updateSource();
-			if (intentCardModel != null)
+			if (intentCardModel != null && !scannerFlag)
 				Toast.makeText(
 						getActivity(),
 						AddContactFragment.this.getResources().getString(
@@ -432,7 +436,7 @@ public class AddContactFragment extends Fragment implements DataWatcher {
 								R.string.add_sucess), Toast.LENGTH_SHORT)
 						.show();
 		} else {
-			if (intentCardModel != null)
+			if (intentCardModel != null && !scannerFlag)
 				Toast.makeText(
 						getActivity(),
 						AddContactFragment.this.getResources().getString(
@@ -447,7 +451,7 @@ public class AddContactFragment extends Fragment implements DataWatcher {
 		DatabaseSyncRegister.getInstance().setChangeLock(true);
 		if (id > 0) {
 			String[] string = null;
-			if (intentCardModel.getImagePath() != null) {
+			if (intentCardModel != null && intentCardModel.getImagePath() != null) {
 				string = intentCardModel.getImagePath().split("#");
 			}
 			Log.d("thismylog", " currentImagePathString = "

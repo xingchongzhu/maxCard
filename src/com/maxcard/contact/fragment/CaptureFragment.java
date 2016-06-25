@@ -17,6 +17,7 @@ import com.maxcard.contact.camera.CameraManager;
 import com.maxcard.contact.common.StaticMethod;
 import com.maxcard.contact.common.StaticSetting;
 import com.maxcard.contact.dataManager.StateManager;
+import com.maxcard.contact.model.CardModel;
 import com.maxcard.contact.scanner.BeepManager;
 import com.maxcard.contact.scanner.CaptureActivityHandler;
 import com.maxcard.contact.scanner.DecodeFormatManager;
@@ -162,8 +163,7 @@ public final class CaptureFragment extends BaseFragement implements
 				.findViewById(R.id.mRelativeLayout);
 		imageButton_back = (ImageButton) view
 				.findViewById(R.id.capture_imageview_back);
-		picture = (ImageView) view
-				.findViewById(R.id.picture);
+		picture = (ImageView) view.findViewById(R.id.picture);
 
 		mChoosePhoto = new ChoosePhoto(getActivity());
 		imageButton_back.setOnClickListener(new View.OnClickListener() {
@@ -188,10 +188,13 @@ public final class CaptureFragment extends BaseFragement implements
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getActivity(), NameCardScannerActivity.class);
-		        //scanMode = scanMode == SCAN_MODE_PREVIEW ? SCAN_MODE_PREVIEW : SCAN_MODE_PICTURE;
-		        intent.putExtra(NameCardScannerActivity.KEY_SCAN_MODE, NameCardScannerActivity.SCAN_MODE_PREVIEW);
-		        getActivity().startActivity(intent);
+				Intent intent = new Intent(getActivity(),
+						NameCardScannerActivity.class);
+				// scanMode = scanMode == SCAN_MODE_PREVIEW ? SCAN_MODE_PREVIEW
+				// : SCAN_MODE_PICTURE;
+				intent.putExtra(NameCardScannerActivity.KEY_SCAN_MODE,
+						NameCardScannerActivity.SCAN_MODE_PREVIEW);
+				getActivity().startActivity(intent);
 			}
 
 		});
@@ -210,7 +213,7 @@ public final class CaptureFragment extends BaseFragement implements
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				doPhotoScanner();
 			}
 
 		});
@@ -246,9 +249,6 @@ public final class CaptureFragment extends BaseFragement implements
 
 	@SuppressLint("NewApi")
 	public void selectPhoto() {
-		String[] choices = new String[2];
-		choices[0] = getActivity().getString(R.string.select_max_image);
-		choices[1] = getActivity().getString(R.string.select_back);
 
 		final AlertDialog dialog = new AlertDialog.Builder(getActivity())
 				.create();
@@ -276,6 +276,33 @@ public final class CaptureFragment extends BaseFragement implements
 				});
 	}
 
+	@SuppressLint("NewApi")
+	public void doPhotoScanner() {
+		final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+				.create();
+		Window window = dialog.getWindow();
+		window.setGravity(Gravity.BOTTOM); // 此处可以设置dialog显示的位置
+		window.setWindowAnimations(R.style.mystyle); // 添加动画
+		dialog.show();
+		dialog.setContentView(R.layout.bottom_dialog_more_item);
+		window.findViewById(R.id.select_max).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+	
+					}
+				});
+		window.findViewById(R.id.select_card).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+
+					}
+				});
+	}
+
 	// 请求Gallery程序
 	protected void doPickPhotoFromGallery() {
 		try {
@@ -299,24 +326,26 @@ public final class CaptureFragment extends BaseFragement implements
 			if (data != null) {
 				ByteArrayOutputStream o = null;
 				try {
-					String[] proj = new String[]{MediaStore.Images.Media.DATA};
-					Cursor cursor = getActivity().getContentResolver().query(data.getData(), proj, null, null, null);
+					String[] proj = new String[] { MediaStore.Images.Media.DATA };
+					Cursor cursor = getActivity().getContentResolver().query(
+							data.getData(), proj, null, null, null);
 					String imgPath = "";
-					if(cursor.moveToFirst()){
-						int columnIndex = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
-						//获取到用户选择的二维码图片的绝对路径
+					if (cursor.moveToFirst()) {
+						int columnIndex = cursor
+								.getColumnIndex(MediaStore.Images.Media.DATA);
+						// 获取到用户选择的二维码图片的绝对路径
 						imgPath = cursor.getString(columnIndex);
 					}
 					cursor.close();
-				   if (selectFlag) {
-							//获取解析结果
-							Result rawResult = doTakeMaxPictureDecode(imgPath);
+					if (selectFlag) {
+						// 获取解析结果
+						Result rawResult = doTakeMaxPictureDecode(imgPath);
 					} else {
-							// doTakePictureDecode(o.toByteArray(), 0);
-						}
-				}catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+						// doTakePictureDecode(o.toByteArray(), 0);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 			break;
@@ -335,6 +364,8 @@ public final class CaptureFragment extends BaseFragement implements
 		// CameraManager必须在这里初始化，而不是在onCreate()中。
 		// 这是必须的，因为当我们第一次进入时需要显示帮助页，我们并不想打开Camera,测量屏幕大小
 		// 当扫描框的尺寸不正确时会出现bug
+		ActionBar mActionBar = getActivity().getActionBar();
+		mActionBar.hide();
 		cameraManager = new CameraManager(getActivity().getApplication());
 
 		viewfinderView = (ViewfinderView) view
@@ -359,6 +390,42 @@ public final class CaptureFragment extends BaseFragement implements
 
 		decodeFormats = null;
 		characterSet = null;
+	}
+
+	private void dealwithmessage(Result obj) {
+		String Text = obj.getText().toString();
+		String s = " ";
+		if (Text.length() > 7)
+			s = Text.substring(0, 7);
+		if ("http://".equals(s)) {
+			Intent viewIntent = new Intent("android.intent.action.VIEW",
+					Uri.parse(Text));
+			startActivity(viewIntent);
+
+		} else {
+			String str[] = Text.split(StaticSetting.SPLITEFLAG);
+			CardModel tmp = null;
+			if (str.length > StaticSetting.SPLITE_MAX) {
+				tmp = StaticMethod.decodeMaxCard(Text);
+				AddContactFragment edit = new AddContactFragment();
+				Bundle args = new Bundle();
+				args.putBoolean("scanner", true);
+				args.putParcelable("CardModel", tmp);
+				edit.setArguments(args); // FragmentActivity将点击的菜单列表标题传递给Fragment
+				StateManager.getInstance().startStateForResult(edit);
+			} else {
+				ShowScannerResaultFragement mShowScannerResaultFragement = new ShowScannerResaultFragement();
+				Bundle args = new Bundle();
+				args.putString("string", Text);
+				mShowScannerResaultFragement.setArguments(args); // FragmentActivity将点击的菜单列表标题传递给Fragment
+				StateManager.getInstance().startStateForResult(
+						mShowScannerResaultFragement);
+			}
+			// Toast.makeText(getActivity(), "扫描成功 " + Text+"  "+str.length,
+			// Toast.LENGTH_SHORT)
+			// .show();
+		}
+
 	}
 
 	@Override
@@ -426,79 +493,71 @@ public final class CaptureFragment extends BaseFragement implements
 		// 这里处理解码完成后的结果，此处将参数回传到Activity处理
 		if (fromLiveScan) {
 			beepManager.playBeepSoundAndVibrate();
-
-			Toast.makeText(getActivity(), "扫描成功 " + rawResult.getText(),
-					Toast.LENGTH_SHORT).show();
-
-			// Intent intent = getIntent();
-			// intent.putExtra("codedContent", rawResult.getText());
-			// intent.putExtra("codedBitmap", barcode);
-			// setResult(RESULT_OK, intent);
-			// finish();
+			dealwithmessage(rawResult);
 		}
 
 	}
 
 	public Result doTakeMaxPictureDecode(String bitmapPath) {
-		//解析转换类型UTF-8
+		// 解析转换类型UTF-8
 		Hashtable<DecodeHintType, String> hints = new Hashtable<DecodeHintType, String>();
 		hints.put(DecodeHintType.CHARACTER_SET, "utf-8");
-		//获取到待解析的图片
-		BitmapFactory.Options options = new BitmapFactory.Options(); 
-		//如果我们把inJustDecodeBounds设为true，那么BitmapFactory.decodeFile(String path, Options opt)
-		//并不会真的返回一个Bitmap给你，它仅仅会把它的宽，高取回来给你
+		// 获取到待解析的图片
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		// 如果我们把inJustDecodeBounds设为true，那么BitmapFactory.decodeFile(String path,
+		// Options opt)
+		// 并不会真的返回一个Bitmap给你，它仅仅会把它的宽，高取回来给你
 		options.inJustDecodeBounds = true;
-		//此时的bitmap是null，这段代码之后，options.outWidth 和 options.outHeight就是我们想要的宽和高了
-		Bitmap bitmap = BitmapFactory.decodeFile(bitmapPath,options);
-		//我们现在想取出来的图片的边长（二维码图片是正方形的）设置为400像素
+		// 此时的bitmap是null，这段代码之后，options.outWidth 和 options.outHeight就是我们想要的宽和高了
+		Bitmap bitmap = BitmapFactory.decodeFile(bitmapPath, options);
+		// 我们现在想取出来的图片的边长（二维码图片是正方形的）设置为400像素
 		/**
-			options.outHeight = 400;
-			options.outWidth = 400;
-			options.inJustDecodeBounds = false;
-			bitmap = BitmapFactory.decodeFile(bitmapPath, options);
-		*/
-		//以上这种做法，虽然把bitmap限定到了我们要的大小，但是并没有节约内存，如果要节约内存，我们还需要使用inSimpleSize这个属性
+		 * options.outHeight = 400; options.outWidth = 400;
+		 * options.inJustDecodeBounds = false; bitmap =
+		 * BitmapFactory.decodeFile(bitmapPath, options);
+		 */
+		// 以上这种做法，虽然把bitmap限定到了我们要的大小，但是并没有节约内存，如果要节约内存，我们还需要使用inSimpleSize这个属性
 		options.inSampleSize = options.outHeight / 400;
-		if(options.inSampleSize <= 0){
-			options.inSampleSize = 1; //防止其值小于或等于0
+		if (options.inSampleSize <= 0) {
+			options.inSampleSize = 1; // 防止其值小于或等于0
 		}
 		/**
 		 * 辅助节约内存设置
 		 * 
-		 * options.inPreferredConfig = Bitmap.Config.ARGB_4444;    // 默认是Bitmap.Config.ARGB_8888
-		 * options.inPurgeable = true; 
-		 * options.inInputShareable = true; 
+		 * options.inPreferredConfig = Bitmap.Config.ARGB_4444; //
+		 * 默认是Bitmap.Config.ARGB_8888 options.inPurgeable = true;
+		 * options.inInputShareable = true;
 		 */
 		options.inJustDecodeBounds = false;
-		bitmap = BitmapFactory.decodeFile(bitmapPath, options); 
-		//新建一个RGBLuminanceSource对象，将bitmap图片传给此对象
+		bitmap = BitmapFactory.decodeFile(bitmapPath, options);
+		// 新建一个RGBLuminanceSource对象，将bitmap图片传给此对象
 		RGBLuminanceSource rgbLuminanceSource = new RGBLuminanceSource(bitmap);
-		//将图片转换成二进制图片
-		BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(rgbLuminanceSource));
-		//初始化解析对象
+		// 将图片转换成二进制图片
+		BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(
+				rgbLuminanceSource));
+		// 初始化解析对象
 		QRCodeReader reader = new QRCodeReader();
-		//开始解析
+		// 开始解析
 		Result result = null;
 		try {
 			result = reader.decode(binaryBitmap, hints);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
-		
+
 		if (result != null) {
 			Toast.makeText(getActivity(), "结果 " + result.getText(),
 					Toast.LENGTH_SHORT).show();
 		} else {
-			Toast.makeText(getActivity(), "无效图片",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), "无效图片", Toast.LENGTH_SHORT).show();
 		}
 		return result;
 	}
-	
+
 	public void doTakePictureDecode(final Bitmap bitmap) {
 
 	}
+
 	/**
 	 * 初始化Camera
 	 * 

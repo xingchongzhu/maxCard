@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.maxcard.contact.R;
 import com.maxcard.contact.common.MaxCard;
+import com.maxcard.contact.common.StaticMethod;
 import com.maxcard.contact.model.CardModel;
 import com.maxcard.contact.sortlist.SideBar;
 
@@ -45,6 +46,18 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 	private boolean isShowBar = false;
 	private boolean isShowLetter = false;
 	private int letterCounter[];
+	private ViewHolder viewHolder = null;
+	private ViewHolder viewHolder1 = null;
+	private ViewHolder viewHolder2 = null;
+	private ViewHolder viewHolder3 = null;
+	private ViewHolder viewHolder4 = null;
+	private ViewHolder viewHolder5 = null;
+	private ViewHolder viewHolder6 = null;
+	private ViewHolder viewHolder7 = null;
+	private ViewHolder viewHolder8 = null;
+	private ViewHolder viewHolder9 = null;
+	private ViewHolder viewHolder10 = null;
+	private ViewHolder viewHolder11 = null;
 	private List<String> arrlist = Arrays.asList(SideBar.b);
 	public SortAdapter(Context mContext, List<CardModel> list,ImageView maxdialog,int srceenWide,int srceenheight) {
 		this.mContext = mContext;
@@ -110,18 +123,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 	@SuppressWarnings("null")
 	@SuppressLint("InflateParams")
 	public View getView(final int position, View view, ViewGroup arg2) {
-		ViewHolder viewHolder = null;
-		ViewHolder viewHolder1 = null;
-		ViewHolder viewHolder2 = null;
-		ViewHolder viewHolder3 = null;
-		ViewHolder viewHolder4 = null;
-		ViewHolder viewHolder5 = null;
-		ViewHolder viewHolder6 = null;
-		ViewHolder viewHolder7 = null;
-		ViewHolder viewHolder8 = null;
-		ViewHolder viewHolder9 = null;
-		ViewHolder viewHolder10 = null;
-		ViewHolder viewHolder11 = null;
+		
 		if(list != null && list.size() > 0){
 			final CardModel mContent = list.get(position);
 			//Log.d(TAG, "getView mContent.getType() = "+mContent.getType());
@@ -365,7 +367,8 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 			
 			//根据position获取分类的首字母的Char ascii值
 			//int section = getSectionForPosition(position);
-			context = mContent.getmSortModel().getName()+":"+mContent.getNumber()+":"+mContent.getEmail()+":"+mContent.getQQ()+":"+mContent.getCompany();
+			context = StaticMethod.codeMaxCard(mContent);
+			//context = mContent.getmSortModel().getName()+":"+mContent.getNumber()+":"+mContent.getEmail()+":"+mContent.getQQ()+":"+mContent.getCompany();
 			switch (mContent.getType()) { 
             case 0:
             	//如果当前位置等于该分类首字母的Char的位置 ，则认为是第一次出现
@@ -384,6 +387,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder.email_address.setText(this.list.get(position).getEmail());
     			viewHolder.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder.select.setVisibility(View.VISIBLE);
     			}else{
@@ -401,7 +405,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -437,6 +441,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder1.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder1.email_address.setText(this.list.get(position).getEmail());
     			viewHolder1.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder1.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder1.select.setVisibility(View.VISIBLE);
     			}else{
@@ -454,7 +459,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder1.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -488,6 +493,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder2.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder2.email_address.setText(this.list.get(position).getEmail());
     			viewHolder2.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder2.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder2.select.setVisibility(View.VISIBLE);
     			}else{
@@ -505,7 +511,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else{
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder2.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -540,6 +546,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder3.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder3.email_address.setText(this.list.get(position).getEmail());
     			viewHolder3.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder3.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder3.select.setVisibility(View.VISIBLE);
     			}else{
@@ -557,7 +564,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder3.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -592,6 +599,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder4.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder4.email_address.setText(this.list.get(position).getEmail());
     			viewHolder4.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder4.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder4.select.setVisibility(View.VISIBLE);
     			}else{
@@ -609,7 +617,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder4.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -644,6 +652,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder5.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder5.email_address.setText(this.list.get(position).getEmail());
     			viewHolder5.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder5.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder5.select.setVisibility(View.VISIBLE);
     			}else{
@@ -661,7 +670,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null ){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder5.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -696,6 +705,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder6.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder6.email_address.setText(this.list.get(position).getEmail());
     			viewHolder6.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder6.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder6.select.setVisibility(View.VISIBLE);
     			}else{
@@ -713,7 +723,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null ){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder6.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -748,6 +758,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder7.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder7.email_address.setText(this.list.get(position).getEmail());
     			viewHolder7.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder7.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder7.select.setVisibility(View.VISIBLE);
     			}else{
@@ -765,7 +776,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null ){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder7.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -800,6 +811,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder8.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder8.email_address.setText(this.list.get(position).getEmail());
     			viewHolder8.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder8.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder8.select.setVisibility(View.VISIBLE);
     			}else{
@@ -817,7 +829,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder8.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -852,6 +864,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder9.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder9.email_address.setText(this.list.get(position).getEmail());
     			viewHolder9.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder9.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder9.select.setVisibility(View.VISIBLE);
     			}else{
@@ -869,7 +882,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder9.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -904,6 +917,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder10.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder10.email_address.setText(this.list.get(position).getEmail());
     			viewHolder10.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder10.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder10.select.setVisibility(View.VISIBLE);
     			}else{
@@ -921,7 +935,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null ){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder10.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -956,6 +970,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
     			viewHolder11.phone_number.setText(this.list.get(position).getNumber());
     			viewHolder11.email_address.setText(this.list.get(position).getEmail());
     			viewHolder11.qq_number.setText(this.list.get(position).getQQ());
+    			viewHolder11.context = context;
     			if(this.list.get(position).isSelected){
     				viewHolder11.select.setVisibility(View.VISIBLE);
     			}else{
@@ -973,7 +988,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 							}else if(maxdialog != null){
 								maxdialog.setVisibility(View.VISIBLE);
 								try {
-									maxdialog.setImageBitmap(MaxCard.createQRImage(context, maxSize, maxSize, null));
+									maxdialog.setImageBitmap(MaxCard.createQRImage(viewHolder11.context, maxSize, maxSize, null));
 								} catch (FileNotFoundException
 										| NotFoundException e) {
 									// TODO Auto-generated catch block
@@ -1006,6 +1021,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 		TextView name;
 		ImageView icon;
 		ImageView select ;
+		String context;
 	}
 
 	/**

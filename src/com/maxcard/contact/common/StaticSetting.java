@@ -30,8 +30,9 @@ public final class StaticSetting {
 	public static final int ACCESS_CALL_PHONE_PERMISSION_GRANTED = 0x08;
 	public static final int WRITE_EXTERNAL_STORAGE_PERMISSION_GRANTED = 0x04;
 	public static final int NONE_PERMISSION_GRANTED = 0x00;
-
+	public static final int SPLITE_MAX = 3;
 	public static final String PERMS_CAMERA = Manifest.permission.CAMERA;
+	public static final String SPLITEFLAG = "~";
 	public static final String PERMS_RECORD_AUDIO = Manifest.permission.RECORD_AUDIO;
 	public static int REQUESTCODE_REQUEST_CAMERA_PERMISSIONS = 2508;
 

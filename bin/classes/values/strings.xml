@@ -129,4 +129,6 @@
 	<string name="select_max_image">选择二维码图片</string>
 	<string name="select_card_image">选择名片图片</string>
 	<string name="scanner_max_picture">正在扫描二维码图片...</string>
+	<string name="select_lot_max_image">选择多张二维码图片</string>
+	<string name="select_lot_card_image">选择多张名片图片</string>
 </resources>

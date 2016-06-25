@@ -15,6 +15,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -38,6 +39,7 @@ public class MaxCard {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Bitmap createQRImage(String content, int widthPix, int heightPix,Bitmap logoBm) throws FileNotFoundException {
 		Bitmap bitmap = null;
+		Log.d("thismylog", content);
 		try {
 			if (content == null || "".equals(content)) {
 				//Toast.makeText(content, "请填写完整二维码信息", Toast.LENGTH_SHORT).show();

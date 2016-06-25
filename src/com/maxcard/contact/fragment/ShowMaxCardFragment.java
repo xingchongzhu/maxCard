@@ -171,6 +171,7 @@ public class ShowMaxCardFragment extends Fragment implements DataWatcher {
 						.getContactId();
 				args.putString(StaticSetting.INTENT_CONTACT_ID_FLAG,
 						currentContactIdString);
+				//args.putParcelable(key, value);
 				edit.setArguments(args); // FragmentActivity将点击的菜单列表标题传递给Fragment
 				StateManager.getInstance().startStateForResult(edit);
 			}
