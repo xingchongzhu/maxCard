@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/filtershow_background"
+    android:orientation="vertical" > -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        
+        style="@style/wrap_layout"
+        android:background="#00000000">"
+
+    <Button
+        android:id="@+id/select_max"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btn_style_alert_dialog_cancel"
+        android:gravity="center"
+        android:text="@string/select_max_image"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/select_card"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btn_style_alert_dialog_cancel"
+        android:gravity="center"
+        android:text="@string/select_back"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+
+</LinearLayout>

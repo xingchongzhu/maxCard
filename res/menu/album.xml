@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_sort"
+            android:title="@string/action_sort"
+            android:showAsAction="ifRoom" />
+    <item android:id="@+id/action_camera"
+            android:icon="@drawable/selector_scanner_btn"
+            android:title="@string/switch_to_camera_scan_code"
+            android:showAsAction="ifRoom" />
+    <item android:id="@+id/action_slideshow"
+            android:icon="@drawable/ic_menu_slideshow_holo_light"
+            android:title="@string/slideshow"
+            android:showAsAction="never" />
+    <item android:id="@+id/action_select"
+            android:title="@string/select_item"
+            android:showAsAction="never" />
+    <item android:id="@+id/action_cancel"
+            android:title="@string/cancle_item"
+            android:showAsAction="never" />
+
+</menu>

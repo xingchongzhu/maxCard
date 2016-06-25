@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="left_title_normal">#DD000000</color>
+    <color name="left_title_selectd">#00bcd4</color>
+    <color name="slider_bg_color">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="text_hint_color">#ffffff</color>
+    <color name="text_color_primary_disable_only">#ffffff</color>
+    <color name="color_primary_dark">#0097A7</color>
+    <color name="whites">#ffffff</color>
+    <color name="gray">#AFAFAF</color>
+    <color name="yellow">#F99503</color>
+    <color name="gray_color">#ffe8ecef</color>
+    <color name="bg_sort_color">#EDEDED</color>
+    <color name="color_trans">#00ffffff</color>
+    <color name="color_bottom_btn_pressed">#50FFFFFF</color>
+    <color name="ivory">#fffff0</color>
+    <color name="origal">#FF6633</color>
+    <color name="green">#33CC33</color>
+    <color name="graycolor">#CCCCCC</color>
+    <color name="actionbar_white_text_color">#ffffff</color>
+    <color name="blue">#7EC0EE</color>
+    <color name="alpwhite"> #FFFAFA</color>
+    <color name="liangblue">#F5F5F5</color>
+    <color name="border_clo">#ccc</color>
+    <color name="text_clo">#333</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color>
+ <!-- Android standard ICS color -->
+    <color name="possible_result_points">#c0ffbd21</color>
+ <!-- Android standard ICS color -->
+ <color name="status_text">#ffffffff</color>
+
+</resources>

@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+     <!-- DrawerLayout -->
+    <dimen name="mm_up_arrow_margin">-16dp</dimen>
+    <dimen name="drawlayout_item_left">31dp</dimen>
+    <dimen name="drawlayout_width">256dp</dimen>
+    <dimen name="drawlayout_padding_top_has_status">20dp</dimen>
+    <dimen name="actionbar_paddingEnd">0dp</dimen>
+
+    <dimen name="list_item_height">50dp</dimen>
+    <dimen name="icon_height">100dp</dimen>
+    <dimen name="icon_weight">100dp</dimen>
+    <dimen name="list_item_distance">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+    <dimen name="action_bar_height">56dp</dimen>
+    <dimen name="action_bar_height_distance">60dp</dimen>
+    <dimen name="action_mode_text_size">20sp</dimen>
+    <dimen name="photopage_bottom_icon_bg_margin">16dp</dimen>
+    <dimen name="icon_bg_margin">10dp</dimen>
+    <dimen name="padd_left_right">5dp</dimen>
+</resources>

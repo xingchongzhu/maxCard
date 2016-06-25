@@ -1,0 +1,17 @@
+<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" > -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/wrap_layout"
+    android:background="@drawable/toptitle" >
+    <ListView
+        android:id="@+id/sortlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/whites"
+        android:listSelector="@drawable/comm_btn_selector" />
+</LinearLayout>
+<!-- </RelativeLayout> -->

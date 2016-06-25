@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2010 Google Inc.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<!--
+Copyright 2012 TCL Communication Technology Holdings Limited.
+|      Modifications on Features list / Changes Request / Problems Report      |
+| **************************************************************************** |
+|    date   |     author     |     Key      |            comment               |
+| **********|****************|**************|********************************* |
+| 5/11/2014 |    Haoli Zhang |  FR-824326   |No WiFi Display Extension Mode    |
+| **********|****************|**************|********************************* |
+| 7/11/2014 |   Haoli Zhang  |  FR-830600   |TV Link                           |
+| **********|****************|**************|********************************* |
+| 3/02/2015 |   jian.pan1    |  FR-923105   |should not support wifi_display extend mode|
+| **********|****************|**************|********************************* |
+| 4/22/2015 |   jian.pan1    |  FR-979686   |picture preview overflow menu not according to ergo|
+| **********|****************|**************|********************************* |
+================================================================================
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_camera"
+        android:icon="@drawable/ic_camera"
+        android:showAsAction="ifRoom"
+        android:title="@string/switch_to_camera_scan_code"/>
+    <item
+        android:id="@+id/action_details"
+        android:showAsAction="never"
+        android:title="@string/action_details"/>
+    <item
+        android:id="@+id/action_edit"
+        android:showAsAction="never"
+        android:title="@string/action_edit"/>
+    <item
+        android:id="@+id/action_share"
+        android:showAsAction="never"
+        android:title="@string/action_share"/>
+    <item
+        android:id="@+id/action_saveToIamge"
+        android:showAsAction="never"
+        android:title="@string/action_saveToIamge"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_delete"
+        android:showAsAction="never"
+        android:title="@string/action_delete"/>
+
+</menu>

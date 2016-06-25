@@ -1,0 +1,15 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+  <!--   <include layout="@layout/top_title" /> -->
+    <ListView
+        android:id="@+id/sortlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:background="@color/whites"
+        android:listSelector="@drawable/comm_btn_selector" />
+
+</RelativeLayout>

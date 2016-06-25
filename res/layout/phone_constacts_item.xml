@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/template01" >
+
+    <ImageView
+        android:id="@+id/select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/select"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/catalog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/whites"
+            android:clickable="false"
+            android:enabled="false"
+            android:paddingLeft="5dip"
+            android:textColor="#454545" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/list_item_height"
+                        android:gravity="center"
+                        android:text="姓名"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="5dp"
+                        android:text="13813811234"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/list_item_height"
+                        android:gravity="center"
+                        android:text="电话"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/list_item_height"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="5dp"
+                        android:text="13813811234"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 这里的weight是关键 -->
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/icon_weight"
+                android:layout_height="@dimen/icon_height"
+                android:padding="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/list_item_height"
+                android:gravity="center"
+                android:text="邮箱"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/email_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="dwchen1999@gmail.com"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/list_item_height"
+                android:gravity="center"
+                android:text="QQ"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/qq_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="1020600242"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!--
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/list_item_height"
+            android:background="@drawable/little_background"
+            android:gravity="center"
+            android:text="公司"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/company_name2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:background="@drawable/big_background"
+            android:gravity="center_vertical"
+            android:text="高博"
+            android:paddingLeft="5dp"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+     <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/list_item_height"
+            android:background="@drawable/little_background"
+            android:gravity="center"
+            android:text="住址"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/detail_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:background="@drawable/big_background"
+            android:gravity="center_vertical"
+            android:text="苏州市工业园区青剑湖***"
+            android:paddingLeft="5dp"
+            android:textSize="15sp" />
+    </LinearLayout>
+        -->
+    </LinearLayout>
+
+</RelativeLayout>

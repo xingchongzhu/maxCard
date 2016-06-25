@@ -1,0 +1,287 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F0F3F6"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/action_bar_height_distance" >
+
+        <!--
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/actionbar_bg"
+            android:gravity="center_horizontal|center_vertical" >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/card_title"
+                android:textColor="@color/whites"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/selector_person_btn"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/add_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/selector_person_btn"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" >
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/action_personal"
+                    android:maxHeight="150dp"
+                    android:maxWidth="150dp"
+                    android:minHeight="40dp"
+                    android:minWidth="40dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/person"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <!--
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/selector_person_btn"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" >
+
+                <ImageView
+                    android:id="@+id/bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_rename"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/back"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+            -->
+        </LinearLayout>
+
+        <LinearLayout style="@style/wrap_layout" >
+
+            <com.maxcard.contact.UI.MainViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxHeight="250dp"
+                android:visibility="gone"
+                android:minHeight="150dp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/wrap_layout" >
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout style="@style/wrap_layout" >
+
+                        <LinearLayout style="@style/top_layout" >
+
+                            <TextView
+                                android:id="@+id/name"
+                                style="@style/usertext"
+                                android:text="@string/name" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/name_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+
+                        <!-- <View style="@style/bg_line" /> -->
+
+                        <LinearLayout style="@style/mid_layout" >
+
+                            <TextView
+                                android:id="@+id/number"
+                                style="@style/usertext"
+                                android:text="@@string/number" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/number_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/mid_layout" >
+
+                            <TextView
+                                android:id="@+id/qq"
+                                style="@style/usertext"
+                                android:text="@string/qq" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/qq_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/bottom_layout" >
+
+                            <TextView
+                                android:id="@+id/email"
+                                style="@style/usertext"
+                                android:text="@string/email" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/email_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/wrap_layout" >
+
+                        <LinearLayout style="@style/top_layout" >
+
+                            <TextView
+                                android:id="@+id/company"
+                                style="@style/usertext"
+                                android:text="@string/company" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/company_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/mid_layout" >
+
+                            <TextView
+                                android:id="@+id/department"
+                                style="@style/usertext"
+                                android:text="@string/department" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/department_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/mid_layout" >
+
+                            <TextView
+                                android:id="@+id/position"
+                                style="@style/usertext"
+                                android:text="@string/position" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/position_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/bottom_layout" >
+
+                            <TextView
+                                android:id="@+id/tle"
+                                style="@style/usertext"
+                                android:text="@string/tle" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/tle_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/wrap_layout" >
+
+                        <LinearLayout style="@style/top_layout" >
+
+                            <TextView
+                                android:id="@+id/fax"
+                                style="@style/usertext"
+                                android:text="@string/fax" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/fax_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/mid_layout" >
+
+                            <TextView
+                                android:id="@+id/address"
+                                style="@style/usertext"
+                                android:text="@string/address" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/address_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/mid_layout" >
+
+                            <TextView
+                                android:id="@+id/url"
+                                style="@style/usertext"
+                                android:text="@string/url" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/url_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/bottom_layout" >
+
+                            <TextView
+                                android:id="@+id/words"
+                                style="@style/usertext"
+                                android:text="@string/words" />
+
+                            <com.maxcard.contact.UI.ClearEditText
+                                android:id="@+id/words_edit"
+                                style="@style/img_arrow" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/add_bottom_controls" 
+        	 android:padding="3dp" />
+
+</RelativeLayout>
